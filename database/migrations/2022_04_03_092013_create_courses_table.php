@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('name',200);
             $table->string('duration',10);
             $table->string('price',10);
+            $table->string('image')->nullable();
+            $table->unsignedBigInteger('teacher_id');
             $table->unsignedBigInteger('category_id');
+            $table->longText('description');
             $table->timestamps();
         });
     }

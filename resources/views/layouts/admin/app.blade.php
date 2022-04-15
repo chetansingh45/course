@@ -21,7 +21,6 @@
 
     <!-- Style css -->
     <link href="{{ asset('') }}css/style.css" rel="stylesheet">
-    <link href="{{ asset('') }}css/custom.css" rel="stylesheet">
 
     {{-- Totaster --}}
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" type="text/css">
@@ -52,8 +51,9 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index.php" class="brand-logo">
-                <img src="https://www.webeesocial.com/wp-content/uploads/2020/12/logo-tm-compressed.png" alt="Webeesocial Logo">
+            <a href="{{ route('dashboard') }}" class="brand-logo text-primary">
+                {{-- <img src="https://www.webeesocial.com/wp-content/uploads/2020/12/logo-tm-compressed.png" alt="Webeesocial Logo"> --}}
+                BRIGHT BASE ACADEMY
             </a>
             <div class="nav-control">
                 <div class="hamburger">
@@ -112,7 +112,7 @@
             <div class="dlabnav-scroll">
                 <ul class="metismenu" id="menu">
                     <li>
-                        <a href="index.php" aria-expanded="false">
+                        <a href="{{ route('dashboard') }}" aria-expanded="false">
                             <i class="flaticon-025-dashboard"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
@@ -140,11 +140,30 @@
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-041-graph"></i>
-                            <span class="nav-text">Users</span>
+                            <span class="nav-text">Students</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('users.list') }}">List</a></li>
-                            <li><a href="attendance.php">Attendance</a></li>
+                            <li><a href="attendance.php">New Student</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="flaticon-041-graph"></i>
+                            <span class="nav-text">Teachers</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('teacher.list') }}">List</a></li>
+                            <li><a href="{{ route('teacher.create') }}">New Teacher</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="flaticon-041-graph"></i>
+                            <span class="nav-text">Payments</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('users.list') }}">List</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -201,7 +220,7 @@
 
     <!-- Apex Chart -->
     <script src="{{ asset('') }}vendor/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js"></script>
-
+    <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
     <!-- Chart piety plugin files -->
     <script src="{{ asset('') }}vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('') }}js/plugins-init/datatables.init.js"></script>

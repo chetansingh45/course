@@ -1,113 +1,99 @@
 @extends('layouts.admin.app')
-@section('title','View Course')
+@section('title','Course Details')
 @section('content')
-<div class="row">
-	<div class="col-12">
-		<div class="row align-items-center mb-3">
-            <div class="col-md-6">
-                <a href="javascript:void(0);" class="btn btn-primary me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#addNewVideoModal"><i class="fas fa-plus me-2"></i>Add New Video</a>
+<div class="container-fluid">
+				    
+    {{-- <div class="row page-titles mx-0">
+        <div class="col-sm-6 p-md-0">
+            <div class="welcome-text">
+                <h4>Course Details</h4>
             </div>
-            {{-- <div class="col-md-6">
-                <div class="input-group search-area">
-                    <input type="text" class="form-control h-auto" placeholder="search job title here...">
-                    <span class="search-btn"><a href="javascript:void(0)" class="btn btn-primary rounded-circle"><i class="flaticon-381-search-2"></i></a></span>
-                </div>
-            </div> --}}
         </div>
+    </div> --}}
     
-		<div class="table-responsive">
-			<table class="table display mb-4 dataTablesCard job-table table-responsive-xl card-table" id="example5">
-				<thead>
-					<tr>
-						<th>No</th>
-						<th>Name</th>
-						<th>Description</th>
-						<th>Video</th>
-						<th>Added Date</th>
-						<th>Status</th>
-						<th class="text-center">Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-                    @foreach($videos as $video)
-					<tr>
-						<td>{{ $video->id }}</td>
-						<td>{{ $video->name }}</td>
-						<td class="wspace-no">{{ $video->description }}</td>
-						<td class="wspace-no">{{ $video->video_url }}</td>
-						<td>{{ $video->created_at }}</td>
-						<td>
-                            @if($video->status==1)
-                                Active
-                            @else
-                                In-Active
-                            @endif
-                        </td>
-						<td>
-							<div class="action-buttons d-flex justify-content-center">
-								<a href="javascript:void(0);" class="btn btn-success light mr-2">
-									<svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
-								</a>
-								<a href="javascript:void(0);" class="btn btn-secondary light mr-2">
-									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
-										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-											<rect x="0" y="0" width="24" height="24"></rect>
-											<path d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) "></path>
-											<rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2" rx="1"></rect>
-										</g>
-									</svg>
-								</a>
-								<a href="javascript:void(0);" class="btn btn-danger light">
-									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
-										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-											<rect x="0" y="0" width="24" height="24"></rect>
-											<path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero"></path>
-											<path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"></path>
-										</g>
-									</svg>
-								</a>
-							</div>
-						</td>
-					</tr>
-                    @endforeach
-				</tbody>
-			</table>
-		</div>
-	</div>
-</div>
-
-{{-- Modals --}}
-{{-- Add new Video Model --}}
-<div class="modal fade" id="addNewVideoModal" tabindex="-1" role="dialog" aria-labelledby="addNewVideoModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add New Video</h5>
+    <div class="row">
+        <div class="col-xl-3 col-xxl-4 col-lg-4">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <button type="button" class="btn btn-success btn-sm">Add New</button>
+						<div class="card-body">
+							<h4 class="mb-0 text-center">{{ $course->name }}</h4>
+                        </div>
+						<img class="img-fluid" src="{{ asset('images/courses').'/'.$course->image }}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">About Course</h2>
+                        </div>
+                        <div class="card-body pb-0">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex px-0 justify-content-between">
+                                    <strong>Duration</strong>
+                                    <span class="mb-0">{{ $course->duration }} Days</span>
+                                </li>
+                                <li class="list-group-item d-flex px-0 justify-content-between">
+                                    <strong>Professor</strong>
+                                    <span class="mb-0">{{ $course->teacher->name }}</span>
+                                </li>
+                                <li class="list-group-item d-flex px-0 justify-content-between">
+                                    <strong>Price</strong>
+                                    <span class="mb-0">&#8377; {{ $course->price }}</span>
+                                </li>
+                                <li class="list-group-item d-flex px-0 justify-content-between">
+                                    <strong>Date</strong>
+                                    <span class="mb-0">{{ $course->created_at }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-footer pt-0 pb-0 text-center">
+                            <div class="row">
+                                <div class="col-4 pt-3 pb-3 border-right">
+                                    <h3 class="mb-1 text-primary">07</h3>
+                                    <span>Years</span>
+                                </div>
+                                <div class="col-4 pt-3 pb-3 border-right">
+                                    <h3 class="mb-1 text-primary">10</h3>
+                                    <span>Students</span>
+                                </div>
+                                <div class="col-4 pt-3 pb-3">
+                                    <h3 class="mb-1 text-primary">{{ count($course->videos) }}</h3>
+                                    <span>Videos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <form method="post" action="{{ route('video.store') }}">
-            @csrf
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="addNewVideo">Video Url</label>
-                    <input class="form-control" type="text" name="video_url" id="video_url" placeholder="Video URL">
+        <div class="col-xl-9 col-xxl-8 col-lg-8">
+            <div class="card">
+                <div class="card-body">
+					{!! $course->description !!}
+                    <h4 class="text-primary">Our Courses</h4>
+                    <div class="profile-skills pt-2 border-bottom-1 pb-2">
+                        @foreach($similar_courses as $course)
+                            <a href="{{ route('course.view',$course->id) }}" class="btn btn-outline-dark btn-rounded ps-4 my-3 my-sm-0 pe-4 me-3 m-b-10">{{ $course->name }}</a>
+                        @endforeach
+                    </div>
+                    <div class="profile-lang pt-5 border-bottom-1 pb-5">
+                        <h4 class="text-primary mb-4">Language</h4><a href="javascript:void()" class="text-muted pe-3 f-s-16"><i class="flag-icon flag-icon-us"></i> English</a> <a href="javascript:void()" class="text-muted pe-3 f-s-16"><i class="flag-icon flag-icon-fr"></i> French</a>
+                        <a href="javascript:void()" class="text-muted pe-3 f-s-16"><i class="flag-icon flag-icon-bd"></i> Bangla</a>
+                    </div>
+                    <h4 class="text-primary">Courses Information</h4>
+                    <ul class="list-group mb-3 list-group-flush">
+                        <li class="list-group-item border-0 px-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</li>
+                        <li class="list-group-item -0 px-0">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing.</li>
+                        <li class="list-group-item -0 px-0">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence was created for the bliss of souls like mine.</li>
+                        <li class="list-group-item -0 px-0">A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</li>
+                        <li class="list-group-item border-0 px-0">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing.</li>
+                    </ul>
                 </div>
-                <div class="form-group">
-                    <label for="addNewVideo">Name</label>
-                    <input class="form-control" type="text" name="video_name" id="video_name" placeholder="Name">
-                </div>
-                <div class="form-group">
-                    <label for="addNewVideo">Description</label>
-                    <textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
-                </div>
-                <input type="hidden" name="course_id" value="{{ $id }}">
             </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
+    
+</div>
 @endsection
-            

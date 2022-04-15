@@ -98,4 +98,8 @@ class VideoController extends Controller
     {
         //
     }
+
+    public function stream(Request $request){
+        return view('video');
+    }
 }
